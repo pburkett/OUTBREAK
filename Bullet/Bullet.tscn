@@ -1,0 +1,62 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Bullet/Bullet.gd" type="Script" id=1]
+[ext_resource path="res://Bullet/assets/main_spritesheet.aseprite" type="SpriteFrames" id=2]
+
+[sub_resource type="PhysicsMaterial" id=2]
+bounce = 2.0
+
+[sub_resource type="GDScript" id=4]
+script/source = "extends Area2D
+
+@export var damage = 20
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+"
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 3.0
+height = 5.99438
+
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 1.0
+height = 3.99438
+
+[node name="Bullet" type="RigidBody2D" groups=["clear_on_level_reload", "hitbox"]]
+collision_layer = 2
+physics_material_override = SubResource( 2 )
+gravity_scale = 0.0
+max_contacts_reported = 20
+contact_monitor = true
+script = ExtResource( 1 )
+collisions_before_dissapear = 1
+
+[node name="Hitbox" type="Area2D" parent="." groups=["hitbox"]]
+collision_layer = 3
+script = SubResource( 4 )
+
+[node name="Collision" type="CollisionShape2D" parent="Hitbox"]
+visible = false
+position = Vector2( 0, 0.00186157 )
+shape = SubResource( 1 )
+
+[node name="PhysicsCollision" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource( 3 )
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+frames = ExtResource( 2 )
+animation = "traveling"
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_AnimatedSprite_animation_finished"]

@@ -1,0 +1,5 @@
+res://default_env.tres
+res://Main/Main.tscn
+res://Player/Player.gd
+res://Camera2D.gd
+res://Player/Player.tscn
