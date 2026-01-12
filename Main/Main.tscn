@@ -1,11 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://cw5g6r4yknf8s"]
 
-[ext_resource type="PackedScene" path="res://Level.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://ctn4euwk4dnk7" path="res://Level.tscn" id="1"]
 [ext_resource type="PackedScene" path="res://GUI.tscn" id="2"]
 
 [node name="Main" type="Node2D"]
 
 [node name="Level" parent="." instance=ExtResource("1")]
-position = Vector2(599, 385)
 
 [node name="CanvasLayer" parent="." instance=ExtResource("2")]

@@ -154,7 +154,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="5"]
-size = Vector2(0.09149174, 0.44531837)
+size = Vector2(1.1159528, 5.431685)
 
 [sub_resource type="OccluderPolygon2D" id="7"]
 polygon = PackedVector2Array(7.00005, 13.5, 13, 8.49994, 13, -9.00006, 8.99995, -9.00003, 8.99998, -3.50003, -11, -3.49997, -11, -8.99997, -15, -8.99994, -15, 8.50006, -8.99995, 13.5)
@@ -188,7 +188,7 @@ script = ExtResource("3")
 damage = 100
 
 [node name="HitBox" type="CollisionShape2D" parent="Swipe"]
-position = Vector2(-3.2547565, -9.343188)
+position = Vector2(10.327394, -7.5869865)
 scale = Vector2(6.85708, 1.81809)
 shape = SubResource("5")
 disabled = true
@@ -207,5 +207,6 @@ polygon = PackedVector2Array(10.0802, -3.99478, 10.0803, 8.00522, 4.01593, 13.00
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 occluder = SubResource("7")
 
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="choose_animation"]
 [connection signal="timeout" from="Swipe/SwipeEndLag" to="." method="_on_Timer_timeout"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]

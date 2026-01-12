@@ -7,4 +7,4 @@ func _ready():
 
 func _process(delta):
 	var health_proportion = (float(player_node.hit_points) / player_node.max_hit_points) * 4
-	$Sprite2D.texture = load("res://HealthIndicator/Assets/" + str(health_proportion) + "_lobes.png")
+	$Sprite2D.texture = load("res://HealthIndicator/Assets/" + str(int(health_proportion)) + "_lobes.png")

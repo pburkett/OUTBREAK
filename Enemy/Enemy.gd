@@ -37,11 +37,10 @@ var last_status
 @onready var player_node = get_node("/root/Main/Level/Player")
 @onready var ray_cast_to_player = get_node("Body/CastToPlayer")
 @onready var body_animation_player = get_node("Body/AnimatedSprite2D")
-@onready var path2d = get_node("../Path2D")
-@onready var navigation = get_node("/root/Main/Level/Navigation")
+@onready var path2d = get_node("../../Path2D")
 
 func _ready():
-	connect("area_entered", Callable(self, "_on_hurtbox_area_entered"))
+	# connect("area_entered", Callable(self, "_on_hurtbox_area_entered"))
 	$FireRate.wait_time = 1 / bullets_per_second
 	body_animation_player.play('idle')
  
@@ -86,8 +85,8 @@ func get_new_status(player_spotted)->String:
 		else:	
 			return "player_spotted"
 	elif player_last_known_location:
-		if status == "player_spotted" || status == "firing":
-			path_to_player()
+		# if status == "player_spotted" || status == "firing":
+			# path_to_player()
 		return "pursuing"
 	else:
 		return "patrol"
@@ -100,24 +99,21 @@ func turn_towards_player()->void:
 	move_along_path(false, patrol_speed)
 	$Body.global_rotation = lerp(currently_facing, vector_to_last_known_location, turn_speed).angle()
 
-func path_to_player()->void:
-	var path = navigation.get_simple_path(player_last_known_location.round(), position.round(), true)
-	print(path)
-	var curve = get_parent().get_curve()
-	curve.clear_points()
+# func path_to_player()->void:
+# 	var path = navigation.get_simple_path(player_last_known_location.round(), position.round(), true)
+# 	var curve = get_parent().get_curve()
+# 	curve.clear_points()
 
-	for index in path.size():
-		curve.add_point(path[-index-1])
-	h_offset = 0
+# 	for index in path.size():
+# 		curve.add_point(path[-index-1])
+# 	progress = 0
 
 
 func _on_Hurtbox_area_entered(area ):
-	print('signal')
 	if area.is_in_group('hitbox'):
 		take_damage(area.damage)
 
 func take_damage(damage_amount):
-	print('enemy hit for ', damage_amount, ' points')
 	hit_points -= damage_amount
 	if hit_points <= 0:
 		die()
@@ -149,6 +145,6 @@ func move_along_path(accelerate, speed = 0):
 		current_speed = lerp(float(current_speed), float(speed), acceleration_speed)
 	else:
 		current_speed = lerp(float(current_speed), 0.0, deceleration_speed)
-	h_offset += current_speed
+	progress += current_speed
 
 	

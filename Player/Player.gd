@@ -37,7 +37,6 @@ func get_input()->Vector2:
 func _physics_process(delta):
 	var direction = get_input()	
 	if Input.is_action_just_pressed('swipe') and !is_in_attack_cooldown:
-		print('attack')
 		is_attacking = true
 	var current_max_speed = get_max_speed()
 	if direction.length() > 0:
@@ -65,7 +64,6 @@ func rotate_sprite()->void:
 	rotation = new_angle
 		
 func choose_animation(current_animation)->void:
-	print('choose_anim')
 	if is_in_attack_cooldown:
 		animator.set_speed_scale(( swipe_cooldown_speed_penalty / 100.0 + 1))
 	else:
@@ -77,7 +75,6 @@ func choose_animation(current_animation)->void:
 		swipe_end_lag_timer.start()
 
 	if is_attacking:
-		print('anim play')
 		animator.play('swipe')
 	elif velocity.length() > 50:
 		animator.play('walk')
@@ -93,7 +90,6 @@ func _on_Hurtbox_area_entered(area)->void:
 			take_damage(area.damage)
 	
 func take_damage(damage_amount):
-	print('player hit for ', damage_amount, ' points')
 	hit_points -= damage_amount
 	if hit_points <= 0:
 		die()

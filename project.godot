@@ -19,10 +19,6 @@ boot_splash/use_filter=false
 
 settings/fps/force_fps=60
 
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/GDCharts/plugin.cfg")
-
 [global]
 
 gravity=false

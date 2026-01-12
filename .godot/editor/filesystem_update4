@@ -3,3 +3,7 @@ res://Main/Main.tscn
 res://Player/Player.gd
 res://Camera2D.gd
 res://Player/Player.tscn
+res://Enemy/Enemy.gd
+res://HealthIndicator/HealthIndicator.gd
+res://Level.tscn
+res://Enemy/Enemy.tscn
