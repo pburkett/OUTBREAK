@@ -1,9 +1,9 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1768343544
+::res://::1768344154
 Bullet.tscn::PackedScene::-1::1768166876::0::1::::<><><>0<>0<><>::res://Bullet.gd<>res://BulletArea.gd
 Camera2D.gd::GDScript::2202597520366562867::1768169855::0::1::::<>Camera2D<><>0<>0<><>::
 CHANGELOG.md::TextFile::-1::1639369264::0::1::::<><><>0<>0<><>::
-default_env.tres::Environment::2212067254477670018::1768249915::0::1::::<><><>0<>0<><>::
+default_env.tres::Environment::2212067254477670018::1768343633::0::1::::<><><>0<>0<><>::
 export_presets.cfg::TextFile::-1::1649308158::0::1::::<><><>0<>0<><>::
 flashlight.png::CompressedTexture2D::5582459510060262564::1641025724::1768168589::1::::<><><>0<>0<>c85b928cb4ec72734807e55e4e49a7d1<>res://.godot/imported/flashlight.png-b3ba371939be62918e933c53704c9603.ctex::
 GUI.tscn::PackedScene::-1::1768166876::0::1::::<><><>0<>0<><>::res://HealthIndicator/HealthIndicator.tscn<>res://Camera2D.gd
