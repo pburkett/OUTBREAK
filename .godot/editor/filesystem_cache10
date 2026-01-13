@@ -1,9 +1,9 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1768344154
+::res://::1768344492
 Bullet.tscn::PackedScene::-1::1768166876::0::1::::<><><>0<>0<><>::res://Bullet.gd<>res://BulletArea.gd
 Camera2D.gd::GDScript::2202597520366562867::1768169855::0::1::::<>Camera2D<><>0<>0<><>::
 CHANGELOG.md::TextFile::-1::1639369264::0::1::::<><><>0<>0<><>::
-default_env.tres::Environment::2212067254477670018::1768343633::0::1::::<><><>0<>0<><>::
+default_env.tres::Environment::2212067254477670018::1768344492::0::1::::<><><>0<>0<><>::
 export_presets.cfg::TextFile::-1::1649308158::0::1::::<><><>0<>0<><>::
 flashlight.png::CompressedTexture2D::5582459510060262564::1641025724::1768168589::1::::<><><>0<>0<>c85b928cb4ec72734807e55e4e49a7d1<>res://.godot/imported/flashlight.png-b3ba371939be62918e933c53704c9603.ctex::
 GUI.tscn::PackedScene::-1::1768166876::0::1::::<><><>0<>0<><>::res://HealthIndicator/HealthIndicator.tscn<>res://Camera2D.gd
@@ -39,10 +39,10 @@ Bullet.gd::GDScript::2354856888620307704::1768166876::0::1::::<>RigidBody2D<><>0
 Bullet.tscn::PackedScene::-1::1768166876::0::1::::<><><>0<>0<><>::res://Bullet/Bullet.gd<>res://Bullet/assets/main_spritesheet.aseprite
 ::res://Bullet/assets/::1768085972
 main_spritesheet.res::SpriteFrames::-1::1649306775::0::1::::<><><>0<>0<><>::
-::res://Enemy/::1768174805
+::res://Enemy/::1768344492
 CastToPlayer.gd::GDScript::4161000302353703028::1768166876::0::1::::<>RayCast2D<><>0<>0<><>::
 Enemy.gd::GDScript::7299563181336852031::1768175667::0::1::::<>PathFollow2D<><>0<>0<><>::
-Enemy.tscn::PackedScene::556904887017539843::1768174805::0::1::::<><><>0<>0<><>::uid://db870eoi1m3cl::::res://Enemy/Enemy.gd<>uid://b0jvcjrll1jya::::res://Enemy/CastToPlayer.gd<>res://Enemy/assets/main_spritesheet.aseprite
+Enemy.tscn::PackedScene::556904887017539843::1768344492::0::1::::<><><>0<>0<><>::uid://db870eoi1m3cl::::res://Enemy/Enemy.gd<>uid://b0jvcjrll1jya::::res://Enemy/CastToPlayer.gd<>res://Enemy/assets/main_spritesheet.aseprite
 ::res://Enemy/assets/::1768085972
 main_spritesheet.res::SpriteFrames::-1::1649306749::0::1::::<><><>0<>0<><>::
 ::res://example/::1768168589
@@ -95,4 +95,4 @@ player_animation_final22.png::CompressedTexture2D::8342987352725994381::16399589
 player_animation_final23.png::CompressedTexture2D::9017190454759455098::1639958960::1768168589::1::::<><><>0<>0<>7967852ea4df4800cac0d7d569636427<>res://.godot/imported/player_animation_final23.png-9dd6e75de68cec385eb1f7ec47fc8d83.ctex::
 ::res://TileMap/::1768174379
 ::res://TileMap/Assets/::1768172917
-AllTiles.png::CompressedTexture2D::131483742480024921::1768172915::1768172917::1::::<><><>0<>0<>b502797f274067b14f42dc32ced9ccbc<>res://.godot/imported/AllTiles.png-edc3864c09d2c23df344d17047f79d5f.ctex::
+AllTiles.png::CompressedTexture2D::131483742480024921::1768344690::1768344691::1::::<><><>0<>0<>b502797f274067b14f42dc32ced9ccbc<>res://.godot/imported/AllTiles.png-edc3864c09d2c23df344d17047f79d5f.ctex::
