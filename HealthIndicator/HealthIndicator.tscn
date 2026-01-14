@@ -1,12 +1,17 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=3 uid="uid://cihfu6g7q7rkx"]
 
-[ext_resource path="res://HealthIndicator/Assets/4_lobes.png" type="Texture2D" id=1]
-[ext_resource path="res://HealthIndicator/HealthIndicator.gd" type="Script" id=2]
+[ext_resource type="Texture2D" uid="uid://c3t5wn6gkrrr6" path="res://HealthIndicator/Assets/4_lobes.png" id="1"]
+[ext_resource type="Script" uid="uid://crehen0q5vb5" path="res://HealthIndicator/HealthIndicator.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://lpjscs0rnx26" path="res://HealthIndicator/Assets/border.png" id="3_s5vpr"]
 
 [node name="HealthIndicator" type="Node2D"]
 z_index = 100
-script = ExtResource( 2 )
+scale = Vector2(1.5, 1.5)
+script = ExtResource("2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 100
-texture = ExtResource( 1 )
+texture = ExtResource("1")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+texture = ExtResource("3_s5vpr")
