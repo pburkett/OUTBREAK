@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://h61e3kb5nyb0"]
+[gd_scene load_steps=6 format=3 uid="uid://h61e3kb5nyb0"]
 
 [ext_resource type="Script" uid="uid://db870eoi1m3cl" path="res://Enemy/Enemy.gd" id="1"]
 [ext_resource type="Script" uid="uid://b0jvcjrll1jya" path="res://Enemy/CastToPlayer.gd" id="2"]
 [ext_resource type="SpriteFrames" path="res://Enemy/assets/main_spritesheet.aseprite" id="3"]
+[ext_resource type="Texture2D" uid="uid://clsgj7flhndiq" path="res://flashlight.png" id="4_vso2s"]
 
 [sub_resource type="OccluderPolygon2D" id="1"]
 polygon = PackedVector2Array(5.98363, -5.01958, -0.999994, 0.00326782, -8.01629, -4.97383, -1.03267, -9.99668)
@@ -13,9 +14,11 @@ rotation = 0.00326735
 script = ExtResource("1")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+target_desired_distance = 100.0
 path_postprocessing = 1
+avoidance_enabled = true
 radius = 100.0
-neighbor_distance = 10000.0
+time_horizon_agents = 3.59
 
 [node name="FireRate" type="Timer" parent="."]
 
@@ -25,7 +28,7 @@ position = Vector2(2.3919677e-07, 2.3763876e-07)
 [node name="BodyCollision" type="CollisionPolygon2D" parent="Body"]
 position = Vector2(-14, 9)
 scale = Vector2(3.17708, -161.599)
-polygon = PackedVector2Array(9.45083, 0.00651192, 1.89677, 0.00602667, 1.87209, 0.154542, 9.42615, 0.155027)
+polygon = PackedVector2Array(5.9803257, 0.055794507, 2.832798, 0.05559232, 1.8833978, 0.08647229, 3.1372666, 0.11749378, 5.9700418, 0.11767575, 6.919442, 0.086795785)
 
 [node name="Hurtbox" type="Area2D" parent="Body"]
 position = Vector2(0.00754261, 0.0176552)
@@ -33,7 +36,7 @@ scale = Vector2(3.17708, -161.599)
 
 [node name="BodyCollision" type="CollisionPolygon2D" parent="Body/Hurtbox"]
 position = Vector2(-5.02196, -0.0992242)
-polygon = PackedVector2Array(10.0639, 0.0501523, 2.50979, 0.049667, 2.48511, 0.198182, 10.0392, 0.198667)
+polygon = PackedVector2Array(10.062828, 0.056340087, 2.5087624, 0.055854835, 2.48511, 0.198182, 10.0392, 0.198667)
 
 [node name="CastToPlayer" type="RayCast2D" parent="Body"]
 target_position = Vector2(0, 0)
@@ -53,6 +56,14 @@ occluder = SubResource("1")
 radius = 12.45
 vertices = PackedVector2Array(15.9476385, -16.052193, 16.022787, 6.9476857, -7.977086, 7.026102, -8.052236, -15.973778)
 carve_navigation_mesh = true
+
+[node name="PointLight2D" type="PointLight2D" parent="Body"]
+position = Vector2(9.00322, 0.97058856)
+scale = Vector2(1.0000001, 1.0000001)
+color = Color(1, 1, 0.80784315, 1)
+energy = 1.5
+shadow_enabled = true
+texture = ExtResource("4_vso2s")
 
 [connection signal="timeout" from="FireRate" to="." method="_on_FireRate_timeout"]
 [connection signal="area_entered" from="Body/Hurtbox" to="." method="_on_Hurtbox_area_entered"]

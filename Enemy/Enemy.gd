@@ -1,7 +1,7 @@
 extends PathFollow2D
 @export var view_distance = 800
 @export var turn_speed = .08
-@export var hit_points = 80
+@export var hit_points = 100
 @export var  bullets_per_second = 1.0
 @export var bullet_speed = 400
 
@@ -99,7 +99,6 @@ func pursue():
 	path2d.curve.add_point(path2d.to_local(global_position))
 	path2d.curve.add_point(path2d.to_local(next_point))
 	current_speed = lerp(float(current_speed), float(pursuit_speed), acceleration_speed)
-	$Body.rotation = 0
 	progress = 0
 	progress += current_speed
 	

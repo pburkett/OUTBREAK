@@ -6,7 +6,7 @@ extends CharacterBody2D
 @export var swipe_speed_boost_percentage = 100
 @export var swipe_cooldown_speed_penalty = -40
 @export var turn_speed = .1
-@export var hit_points = 100
+@export var hit_points = 8000
 @export var max_hit_points: int = hit_points
 var is_attacking = false
 var is_in_attack_cooldown = false
@@ -57,10 +57,10 @@ func get_max_speed()->float:
 
 func rotate_sprite()->void:
 	var new_angle
-	if is_attacking:
-		new_angle = snapped(rotation, .25*PI) 
-	else:
-		new_angle = lerp_angle(rotation, velocity.angle() + .5*PI, .1)
+	# if is_attacking:
+	# 	new_angle = snapped(rotation, .25*PI) 
+	# else:
+	new_angle = lerp_angle(rotation, velocity.angle() + .5*PI, .1)
 	rotation = new_angle
 		
 func choose_animation(current_animation)->void:
