@@ -1,9 +1,10 @@
 extends PathFollow2D
 @export var view_distance = 800
 @export var turn_speed = .08
-@export var hit_points = 100
+@export var hit_points = 80
 @export var  bullets_per_second = 1.0
-@export var bullet_speed = 1000
+@export var bullet_speed = 400
+
 @export var status_functions = {
 	"idle": "idle",
 	"patrol": "patrol", 
@@ -13,8 +14,8 @@ extends PathFollow2D
 		}
 var player_last_known_location 
 
-@export var patrol_speed = .5
-@export var pursuit_speed = .8	
+@export var patrol_speed = .8
+@export var pursuit_speed = 1.4
 var current_speed = 0
 @export var acceleration_speed = .1
 @export var deceleration_speed = .10
@@ -37,7 +38,7 @@ var last_status
 @onready var player_node = get_node("/root/Main/Level/Player")
 @onready var ray_cast_to_player = get_node("Body/CastToPlayer")
 @onready var body_animation_player = get_node("Body/AnimatedSprite2D")
-@onready var path2d = get_node("../../Path2D")
+@onready var path2d = get_parent()
 @onready var nav_agent = get_node("./NavigationAgent2D")
 
 func _ready():
@@ -59,10 +60,9 @@ func _physics_process(delta):
 	var last_status = status
 
 	status = get_new_status(player_spotted)
-	if last_status != status:
-		print('status changed to ', status)
+	# if last_status != status:
+	# 	print('status changed to ', status)
 	call(status_functions[status])
-
 
 func idle():
 	# play idle animation
@@ -92,13 +92,16 @@ func get_new_status(player_spotted)->String:
 		return "patrol"
 
 func pursue():
+	$FireRate.stop()
 	nav_agent.target_position = player_node.global_position
-	var next_pos = to_local(nav_agent.get_next_path_position()).normalized()
-	var curve = path2d.get_curve()
-	curve.add_point(next_pos)
-	current_speed = lerp(float(current_speed), float(patrol_speed), acceleration_speed)
-	progress = 10
-	print(player_node.global_position, next_pos, progress)
+	var next_point = nav_agent.get_next_path_position()
+	path2d.curve.clear_points()
+	path2d.curve.add_point(path2d.to_local(global_position))
+	path2d.curve.add_point(path2d.to_local(next_point))
+	current_speed = lerp(float(current_speed), float(pursuit_speed), acceleration_speed)
+	$Body.rotation = 0
+	progress = 0
+	progress += current_speed
 	
 func turn_towards_player()->void:
 	$Body.global_rotation = lerp(currently_facing, vector_to_last_known_location, turn_speed).angle()
@@ -108,7 +111,9 @@ func _on_Hurtbox_area_entered(area ):
 		take_damage(area.damage)
 
 func take_damage(damage_amount):
+
 	hit_points -= damage_amount
+	print('enemy damage: ', damage_amount)
 	if hit_points <= 0:
 		die()
 
@@ -124,7 +129,6 @@ func _on_FireRate_timeout():
 	get_tree().get_root().call_deferred("add_child",new_bullet)
 
 func patrol():
-	print(progress)
 	body_animation_player.play('idle')
 	$Body.rotation = 0
 	current_speed = lerp(float(current_speed), float(patrol_speed), acceleration_speed)

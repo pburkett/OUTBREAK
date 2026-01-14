@@ -7,5 +7,5 @@ func _ready():
 	zoom = Vector2(2,2)
 
 func _process(_delta):
-	position = lerp(position, player_node.global_position, .05)
+	position = lerp(position, player_node.global_position, .03)
 	

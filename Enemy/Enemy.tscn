@@ -11,14 +11,16 @@ polygon = PackedVector2Array(5.98363, -5.01958, -0.999994, 0.00326782, -8.01629,
 position = Vector2(-2.38419e-07, -2.38419e-07)
 rotation = 0.00326735
 script = ExtResource("1")
-bullets_per_second = 0.5
-bullet_speed = 900
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_postprocessing = 1
+radius = 100.0
+neighbor_distance = 10000.0
 
 [node name="FireRate" type="Timer" parent="."]
 
 [node name="Body" type="StaticBody2D" parent="."]
+position = Vector2(2.3919677e-07, 2.3763876e-07)
 
 [node name="BodyCollision" type="CollisionPolygon2D" parent="Body"]
 position = Vector2(-14, 9)
@@ -34,7 +36,6 @@ position = Vector2(-5.02196, -0.0992242)
 polygon = PackedVector2Array(10.0639, 0.0501523, 2.50979, 0.049667, 2.48511, 0.198182, 10.0392, 0.198667)
 
 [node name="CastToPlayer" type="RayCast2D" parent="Body"]
-position = Vector2(15.9999, -0.0522775)
 target_position = Vector2(0, 0)
 script = ExtResource("2")
 
@@ -47,6 +48,11 @@ animation = &"idle"
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Body"]
 position = Vector2(-2.39197e-07, -2.37639e-07)
 occluder = SubResource("1")
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="Body"]
+radius = 12.45
+vertices = PackedVector2Array(15.9476385, -16.052193, 16.022787, 6.9476857, -7.977086, 7.026102, -8.052236, -15.973778)
+carve_navigation_mesh = true
 
 [connection signal="timeout" from="FireRate" to="." method="_on_FireRate_timeout"]
 [connection signal="area_entered" from="Body/Hurtbox" to="." method="_on_Hurtbox_area_entered"]
