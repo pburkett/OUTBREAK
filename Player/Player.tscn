@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://d2qwrpow0gfl7"]
+[gd_scene format=3 uid="uid://d2qwrpow0gfl7"]
 
 [ext_resource type="Script" uid="uid://bi8kqp6opsh6f" path="res://Player/Player.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://b4fr8mi1s5fcr" path="res://Player/new_animation_walk/OUTPUT.png" id="2"]
@@ -159,52 +159,51 @@ size = Vector2(1.1159528, 5.431685)
 [sub_resource type="OccluderPolygon2D" id="7"]
 polygon = PackedVector2Array(-1.499962, 10.500006, 2.5000343, 9.499991, 2.500002, 0.49999094, -1.5000055, -1.4999945, -5.999998, 0.5000217, -5.9999657, 9.500022)
 
-[node name="Player" type="CharacterBody2D"]
-rotation = 1.5708
+[node name="Player" type="CharacterBody2D" unique_id=375443301]
 scale = Vector2(2, 2)
 collision_layer = 7
 script = ExtResource("1")
 
-[node name="BodyCollision" type="CollisionPolygon2D" parent="."]
-position = Vector2(3.02675, 0.49472)
+[node name="BodyCollision" type="CollisionPolygon2D" parent="." unique_id=1475179740]
+position = Vector2(3.0053902, -5.0052795)
 scale = Vector2(0.989387, 1)
 polygon = PackedVector2Array(4.015872, 0.005254656, 5.0266266, 7.5052505, 4.01593, 12.0052, -12.1557, 12.0053, -13.67182, 7.505317, -12.661122, -0.4946856)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1176836944]
 root_node = NodePath("../Sprite2D")
-libraries = {
-&"": SubResource("AnimationLibrary_tok1r")
-}
+libraries/ = SubResource("AnimationLibrary_tok1r")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-1, 0.5)
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=300050930]
+position = Vector2(-1.0213598, -5)
 scale = Vector2(0.998665, 1)
 texture = ExtResource("2")
 hframes = 23
 
-[node name="Swipe" type="Area2D" parent="." groups=["hitbox"]]
+[node name="Swipe" type="Area2D" parent="." unique_id=51124406 groups=["hitbox"]]
+position = Vector2(-0.021359814, -5.5)
 script = ExtResource("3")
 damage = 100
 
-[node name="HitBox" type="CollisionShape2D" parent="Swipe"]
+[node name="HitBox" type="CollisionShape2D" parent="Swipe" unique_id=663202214]
 position = Vector2(10.327394, -7.5869865)
 scale = Vector2(6.85708, 1.81809)
 shape = SubResource("5")
 disabled = true
 
-[node name="SwipeEndLag" type="Timer" parent="Swipe"]
+[node name="SwipeEndLag" type="Timer" parent="Swipe" unique_id=109862113]
 wait_time = 0.6
 one_shot = true
 
-[node name="Hurtbox" type="Area2D" parent="."]
+[node name="Hurtbox" type="Area2D" parent="." unique_id=1749772900]
+position = Vector2(-0.021359814, -5.5)
 
-[node name="Collision" type="CollisionPolygon2D" parent="Hurtbox"]
-visible = false
+[node name="Collision" type="CollisionPolygon2D" parent="Hurtbox" unique_id=862146166]
 position = Vector2(3.02675, 0.49472)
 scale = Vector2(0.989387, 1)
 polygon = PackedVector2Array(10.0802, -3.99478, 10.0803, 8.00522, 4.01593, 13.0052, -12.1557, 13.0053, -18.2201, 8.00534, -18.2201, -3.99466, -18.2201, -9.49466, -14.1772, -9.49469, -14.1772, -3.99467, 6.03732, -3.99475, 6.03731, -9.49475, 10.0802, -9.49478)
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+[node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=2010612585]
+position = Vector2(-0.021359814, -5.5)
 occluder = SubResource("7")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="choose_animation"]

@@ -39,7 +39,6 @@ position = Vector2(-5.02196, -0.0992242)
 polygon = PackedVector2Array(10.062828, 0.056340087, 2.5087624, 0.055854835, 2.48511, 0.198182, 10.0392, 0.198667)
 
 [node name="CastToPlayer" type="RayCast2D" parent="Body" unique_id=1790745040]
-process_priority = 999
 target_position = Vector2(0, 0)
 script = ExtResource("2")
 
