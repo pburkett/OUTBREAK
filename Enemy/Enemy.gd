@@ -60,8 +60,8 @@ func _physics_process(delta):
 	var last_status = status
 
 	status = get_new_status(player_spotted)
-	# if last_status != status:
-	# 	print('status changed to ', status)
+	if last_status != status:
+		print('status changed to ', status)
 	call(status_functions[status])
 
 func idle():
@@ -71,6 +71,8 @@ func idle():
 func look_for_player()->bool:
 	# attempts to find player, returns true if successful
 	var collider = ray_cast_to_player.get_collider() 
+	if !collider:
+		print("collider was null")
 	if collider == player_node and dot_product_to_player > scale_degrees_for_dot_product(field_of_view_degrees)  and distance_to_player < view_distance:
 		player_last_known_location = player_node.get_global_position()
 		vector_to_last_known_location = global_position.direction_to(player_node.get_global_position())	
@@ -129,6 +131,7 @@ func _on_FireRate_timeout():
 
 func patrol():
 	body_animation_player.play('idle')
+	# ???
 	$Body.rotation = 0
 	current_speed = lerp(float(current_speed), float(patrol_speed), acceleration_speed)
 	progress += current_speed
