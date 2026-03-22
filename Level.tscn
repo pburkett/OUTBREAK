@@ -89,3 +89,7 @@ rotation = -0.005987952
 [node name="Path2D2" type="Path2D" parent="." unique_id=1214426526 groups=["clear_on_level_reload"]]
 position = Vector2(-31, 39)
 curve = SubResource("Curve2D_wkftn")
+
+[node name="Enemy" parent="Path2D2" unique_id=2042926266 instance=ExtResource("3")]
+position = Vector2(-147, -270)
+rotation = -0.7174401
