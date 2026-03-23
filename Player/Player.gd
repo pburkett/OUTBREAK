@@ -90,6 +90,7 @@ func _on_Hurtbox_area_entered(area)->void:
 			take_damage(area.damage)
 	
 func take_damage(damage_amount):
+	# print('player taken damage', damage_amount)
 	hit_points -= damage_amount
 	if hit_points <= 0:
 		die()
