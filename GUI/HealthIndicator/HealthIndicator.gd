@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var player_node = get_node("/root/Main/Level/Player")
+@onready var player_node = get_node("/root/Main/LevelManager/Level/Player")
 
 func _ready():
 	pass

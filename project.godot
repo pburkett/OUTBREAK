@@ -23,6 +23,10 @@ boot_splash/use_filter=false
 
 settings/fps/force_fps=60
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [global]
 
 gravity=false

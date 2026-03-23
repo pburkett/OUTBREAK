@@ -18,8 +18,8 @@ signal restart_level
 
 func _ready():
 	animator.connect("animation_finished", Callable(self, "_on_animation_finished"))
-	var level_node = get_node('/root/Main/Level')
-	connect("restart_level", Callable(level_node, "restart_level"))
+	var level_manager = get_node('/root/Main/LevelManager')
+	connect("restart_level", Callable(level_manager, "restart_level"))
 	animator.play('idle')
 	
 func get_input()->Vector2:
@@ -90,7 +90,8 @@ func _on_Hurtbox_area_entered(area)->void:
 			take_damage(area.damage)
 	
 func take_damage(damage_amount):
-	# print('player taken damage', damage_amount)
+	print('player taken damage', damage_amount)
+	print(hit_points)
 	hit_points -= damage_amount
 	if hit_points <= 0:
 		die()

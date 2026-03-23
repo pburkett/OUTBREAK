@@ -35,7 +35,6 @@ radius = 1.0
 height = 3.99438
 
 [node name="Bullet" type="RigidBody2D" unique_id=1702080207 groups=["clear_on_level_reload", "hitbox"]]
-scale = Vector2(2, 2)
 collision_layer = 2
 physics_material_override = SubResource("2")
 gravity_scale = 0.0
@@ -48,12 +47,10 @@ collision_layer = 3
 script = SubResource("4")
 
 [node name="Collision" type="CollisionShape2D" parent="Hitbox" unique_id=1839453706]
-visible = false
 position = Vector2(0, 0.00186157)
 shape = SubResource("1")
 
 [node name="PhysicsCollision" type="CollisionShape2D" parent="." unique_id=1238516988]
-visible = false
 shape = SubResource("3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=770885349]

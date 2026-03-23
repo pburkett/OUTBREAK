@@ -1,11 +1,13 @@
 extends Node2D
 
+# im mr manager
+
 @onready var enemy = get_node("/root/Main/Level/Path2D/Enemy")
 @onready var path_2d = get_node("/root/Main/Level/Path2D")
 
 func _ready():
 	var level = preload("res://Levels/Level2.tscn").instantiate()
-	var gui = load("res://GUI/GUI.tscn")
+	var gui = preload("res://GUI/GUI.tscn").instantiate()
 	add_child(level)
 	add_child(gui)
 	
@@ -17,7 +19,8 @@ func _input(ev):
 			get_tree().quit()	
 
 func restart_level():
-	for node in get_tree().get_nodes_in_group("clear_on_level_reload"):
+	for node in get_tree().get_nodes_in_group("clear_on_level_reload"):	
+		print(node)
 		node.queue_free()
 	get_tree().reload_current_scene()
 

@@ -35,7 +35,7 @@ var distance_to_player
 
 var last_status
 
-@onready var player_node = get_node("/root/Main/Level/Player")
+@onready var player_node = get_node("/root/Main/LevelManager/Level/Player")
 @onready var ray_cast_to_player = get_node("Body/CastToPlayer")
 @onready var body_animation_player = get_node("Body/AnimatedSprite2D")
 @onready var path2d = get_parent()

@@ -6,12 +6,13 @@ var is_dying = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	scale = Vector2(4,4)
+	# scale = Vector2(4,4)
 	$AnimatedSprite2D.play('traveling')
 	pass
 
 func _physics_process(delta):
-	rotation = linear_velocity.angle() + .5*PI
+	if !is_dying:
+		rotation = linear_velocity.angle() + .5*PI
 
 func _integrate_forces(state):
 	if state.get_contact_count() == 1:
@@ -19,6 +20,7 @@ func _integrate_forces(state):
 	if (collisions >= collisions_before_dissapear) and !is_dying:
 		is_dying = true
 		set_linear_velocity(Vector2(0,0))
+		set_angular_velocity(0)
 		$PhysicsCollision.set_deferred("disabled", true)
 		$AnimatedSprite2D.play('impact_metal')
 		
