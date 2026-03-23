@@ -60,8 +60,8 @@ func _physics_process(delta):
 	var last_status = status
 
 	status = get_new_status(player_spotted)
-	# if last_status != status:
-	# 	print('status changed to ', status)
+	if last_status != status:
+		print('status changed to ', status)
 	call(status_functions[status])
 
 func idle():
