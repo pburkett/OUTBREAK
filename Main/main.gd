@@ -4,7 +4,10 @@ extends Node2D
 @onready var path_2d = get_node("/root/Main/Level/Path2D")
 
 func _ready():
-	pass
+	var level = preload("res://Levels/Level2.tscn").instantiate()
+	var gui = load("res://GUI/GUI.tscn")
+	add_child(level)
+	add_child(gui)
 	
 func _input(ev):
 	if ev is InputEventKey:
