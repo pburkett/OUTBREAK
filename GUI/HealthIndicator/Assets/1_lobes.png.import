@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://vfcjbkopck3w"
-path="res://.godot/imported/1_lobes.png-304c13168fb35644aa83f9bec656bf13.ctex"
+path="res://.godot/imported/1_lobes.png-f621f5221f00d2ccd6ec567226c7ad01.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://HealthIndicator/Assets/1_lobes.png"
-dest_files=["res://.godot/imported/1_lobes.png-304c13168fb35644aa83f9bec656bf13.ctex"]
+source_file="res://GUI/HealthIndicator/Assets/1_lobes.png"
+dest_files=["res://.godot/imported/1_lobes.png-f621f5221f00d2ccd6ec567226c7ad01.ctex"]
 
 [params]
 

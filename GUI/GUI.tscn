@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://cmk3im3yu6rc8"]
+
+[ext_resource type="PackedScene" uid="uid://cihfu6g7q7rkx" path="res://GUI/HealthIndicator/HealthIndicator.tscn" id="1"]
+[ext_resource type="Script" uid="uid://6m7pvatgcqe2" path="res://GUI/Camera2D.gd" id="2"]
+
+[node name="GUI" type="CanvasLayer" unique_id=735300534]
+follow_viewport_scale = 0.5
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1670828897]
+zoom = Vector2(0.5, 0.5)
+script = ExtResource("2")
+
+[node name="HealthIndicator" parent="." unique_id=1904356097 instance=ExtResource("1")]
+position = Vector2(1077, 75)
+scale = Vector2(2, 2)

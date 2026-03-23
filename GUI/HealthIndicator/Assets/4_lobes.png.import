@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://lpjscs0rnx26"
-path="res://.godot/imported/border.png-ecd771fd72bb04317e77478f9e33c4aa.ctex"
+uid="uid://c3t5wn6gkrrr6"
+path="res://.godot/imported/4_lobes.png-f7b25bb64770e0d6924909396eaf70ce.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://HealthIndicator/Assets/border.png"
-dest_files=["res://.godot/imported/border.png-ecd771fd72bb04317e77478f9e33c4aa.ctex"]
+source_file="res://GUI/HealthIndicator/Assets/4_lobes.png"
+dest_files=["res://.godot/imported/4_lobes.png-f7b25bb64770e0d6924909396eaf70ce.ctex"]
 
 [params]
 

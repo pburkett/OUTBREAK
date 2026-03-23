@@ -1,10 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://cw5g6r4yknf8s"]
+[gd_scene format=3 uid="uid://cw5g6r4yknf8s"]
 
 [ext_resource type="PackedScene" uid="uid://ctn4euwk4dnk7" path="res://Level.tscn" id="1"]
-[ext_resource type="PackedScene" uid="uid://cmk3im3yu6rc8" path="res://GUI.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://cmk3im3yu6rc8" path="res://GUI/GUI.tscn" id="2"]
 
-[node name="Main" type="Node2D"]
+[node name="Main" type="Node2D" unique_id=192176560]
 
-[node name="Level" parent="." instance=ExtResource("1")]
+[node name="Level" parent="." unique_id=2060484973 instance=ExtResource("1")]
 
-[node name="CanvasLayer" parent="." instance=ExtResource("2")]
+[node name="GUI" parent="." unique_id=735300534 instance=ExtResource("2")]

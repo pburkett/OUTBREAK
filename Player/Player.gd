@@ -6,7 +6,7 @@ extends CharacterBody2D
 @export var swipe_speed_boost_percentage = 100
 @export var swipe_cooldown_speed_penalty = -40
 @export var turn_speed = .1
-@export var hit_points = 8000
+@export var hit_points = 80
 @export var max_hit_points: int = hit_points
 var is_attacking = false
 var is_in_attack_cooldown = false

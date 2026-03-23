@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c3t5wn6gkrrr6"
-path="res://.godot/imported/4_lobes.png-19874b1ccd1d82c7e65067bdca0d5761.ctex"
+uid="uid://b6o8xvw813bjs"
+path="res://.godot/imported/1_lobe.png-7214c12e02c9f31159b26a93a73d9337.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://HealthIndicator/Assets/4_lobes.png"
-dest_files=["res://.godot/imported/4_lobes.png-19874b1ccd1d82c7e65067bdca0d5761.ctex"]
+source_file="res://GUI/HealthIndicator/Assets/1_lobe.png"
+dest_files=["res://.godot/imported/1_lobe.png-7214c12e02c9f31159b26a93a73d9337.ctex"]
 
 [params]
 

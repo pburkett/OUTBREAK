@@ -76,8 +76,6 @@ tile_set = SubResource("TileSet_ofirr")
 top_level = true
 position = Vector2(623, -462)
 scale = Vector2(1, 1)
-hit_points = 100
-max_hit_points = 100
 
 [node name="Path2D" type="Path2D" parent="." unique_id=2097026356 groups=["clear_on_level_reload"]]
 z_index = 1000
