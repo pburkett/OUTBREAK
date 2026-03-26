@@ -167,7 +167,7 @@ script = ExtResource("1")
 [node name="BodyCollision" type="CollisionPolygon2D" parent="." unique_id=1475179740]
 position = Vector2(3.0053902, -5.0052795)
 scale = Vector2(0.989387, 1)
-polygon = PackedVector2Array(4.015872, 0.005254656, 5.0266266, 7.5052505, 4.01593, 12.0052, -12.1557, 12.0053, -13.67182, 7.505317, -12.661122, -0.4946856)
+polygon = PackedVector2Array(4.015872, 0.005254656, 5.0266266, 7.5052505, 2.0160058, 10.505279, -11.123443, 10.505279, -13.67182, 7.505317, -12.661122, -0.4946856)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1176836944]
 root_node = NodePath("../Sprite2D")

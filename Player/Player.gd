@@ -13,6 +13,11 @@ var is_in_attack_cooldown = false
 @onready var animator = $AnimationPlayer
 @onready var sprite = $Sprite2D
 @onready var swipe_end_lag_timer = get_node('Swipe/SwipeEndLag')
+var taken_damage = false
+var damage_velocity = Vector2(0,0)
+
+@export var invincibility_frames = 12
+var i_frames_countdown = 0
 
 signal restart_level
 
@@ -43,9 +48,17 @@ func _physics_process(delta):
 		velocity = lerp(velocity, direction.normalized() * current_max_speed, acceleration_speed)
 	else:
 		velocity = lerp(velocity, Vector2.ZERO, deceleration_speed)
+	rotate_sprite(velocity)
+	if i_frames_countdown != 0:
+		i_frames_countdown -= 1
+
+	if (taken_damage):
+		# get vel of bullet
+		# apply impuse to velocity  
+		velocity += (damage_velocity * .65)
+		taken_damage = false
 	set_velocity(velocity)
 	move_and_slide()
-	rotate_sprite()
 
 func get_max_speed()->float:
 	var current_max_speed = float(max_speed)
@@ -55,12 +68,12 @@ func get_max_speed()->float:
 		current_max_speed *= ( swipe_cooldown_speed_penalty / 100.0 + 1)
 	return current_max_speed
 
-func rotate_sprite()->void:
+func rotate_sprite(input_velocity)->void:
 	var new_angle
 	# if is_attacking:
 	# 	new_angle = snapped(rotation, .25*PI) 
 	# else:
-	new_angle = lerp_angle(rotation, velocity.angle() + .5*PI, .1)
+	new_angle = lerp_angle(rotation, input_velocity.angle() + .5*PI, .1)
 	rotation = new_angle
 		
 func choose_animation(current_animation)->void:
@@ -85,16 +98,21 @@ func _on_Timer_timeout()->void:
 	is_in_attack_cooldown = false
 
 func _on_Hurtbox_area_entered(area)->void:
+	if i_frames_countdown != 0:
+		return
 	if area.is_in_group('hitbox'):
 		if area.get_parent() != self:
-			take_damage(area.damage)
+			take_damage(area.damage, area.get_parent().linear_velocity )
 	
-func take_damage(damage_amount):
-	print('player taken damage', damage_amount)
-	print(hit_points)
+func take_damage(damage_amount, impact_velocity):
+	
 	hit_points -= damage_amount
+	taken_damage = true
+	damage_velocity = impact_velocity
+	i_frames_countdown = invincibility_frames
 	if hit_points <= 0:
 		die()
+	
 
 func die():
 	emit_signal("restart_level")		

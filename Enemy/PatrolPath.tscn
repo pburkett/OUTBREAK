@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://dphsr0is8cqxr"]
+
+[sub_resource type="Curve2D" id="1"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -142, -135, 0, 0, 0, 0, 25, -136, 0, 0, 0, 0, 24, -64, 0, 0, 0, 0, -144, -64, 0, 0, 0, 0, -144, -112)
+}
+point_count = 5
+
+[node name="Path2D" type="Path2D" unique_id=926122655]
+z_index = 1000
+position = Vector2(-273, -162)
+curve = SubResource("1")

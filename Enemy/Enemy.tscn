@@ -2,8 +2,49 @@
 
 [ext_resource type="Script" uid="uid://db870eoi1m3cl" path="res://Enemy/Enemy.gd" id="1"]
 [ext_resource type="Script" uid="uid://b0jvcjrll1jya" path="res://Enemy/CastToPlayer.gd" id="2"]
-[ext_resource type="SpriteFrames" path="res://Enemy/assets/main_spritesheet.aseprite" id="3"]
+[ext_resource type="Texture2D" uid="uid://bhhiyrgoom0qr" path="res://Enemy/assets/main_spritesheet.png" id="3_vso2s"]
 [ext_resource type="Texture2D" uid="uid://clsgj7flhndiq" path="res://flashlight.png" id="4_vso2s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fkela"]
+atlas = ExtResource("3_vso2s")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2k2y"]
+atlas = ExtResource("3_vso2s")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jd4ap"]
+atlas = ExtResource("3_vso2s")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ypri"]
+atlas = ExtResource("3_vso2s")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uxjip"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fkela")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2k2y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jd4ap")
+}],
+"loop": false,
+"name": &"fire",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ypri")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 12.0
+}]
 
 [sub_resource type="OccluderPolygon2D" id="1"]
 polygon = PackedVector2Array(5.98363, -5.01958, -0.999994, 0.00326782, -8.01629, -4.97383, -1.03267, -9.99668)
@@ -45,8 +86,8 @@ script = ExtResource("2")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Body" unique_id=1253050049]
 position = Vector2(7.99996, -0.0261389)
 rotation = 1.5708
-sprite_frames = ExtResource("3")
-animation = &"idle"
+sprite_frames = SubResource("SpriteFrames_uxjip")
+animation = &"fire"
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Body" unique_id=160565009]
 position = Vector2(-2.39197e-07, -2.37639e-07)
