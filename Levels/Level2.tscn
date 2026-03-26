@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://d2qwrpow0gfl7" path="res://Player/Player.tscn" id="2_5e435"]
 [ext_resource type="PackedScene" uid="uid://h61e3kb5nyb0" path="res://Enemy/Enemy.tscn" id="3_s2pdy"]
 [ext_resource type="PackedScene" uid="uid://dphsr0is8cqxr" path="res://Enemy/PatrolPath.tscn" id="4_506po"]
+[ext_resource type="PackedScene" uid="uid://bm2ry58qa7md1" path="res://Enemy/MachineGunEnemy.tscn" id="5_v115i"]
 
 [sub_resource type="GDScript" id="GDScript_24c1m"]
 script/source = "extends Node2D
@@ -95,7 +96,7 @@ tile_set = SubResource("TileSet_ofirr")
 
 [node name="Player" parent="." unique_id=1720752981 instance=ExtResource("2_5e435")]
 top_level = true
-position = Vector2(-217, -174)
+position = Vector2(-204, -172)
 rotation = 1.5707964
 scale = Vector2(1, 1)
 
@@ -128,6 +129,6 @@ rotation = 3.1250653
 position = Vector2(238, 274)
 curve = SubResource("Curve2D_jglcl")
 
-[node name="Enemy" parent="Path2D4" unique_id=251815775 instance=ExtResource("3_s2pdy")]
+[node name="Enemy" parent="Path2D4" unique_id=1210264714 instance=ExtResource("5_v115i")]
 position = Vector2(-142, -135)
 rotation = -0.67356724

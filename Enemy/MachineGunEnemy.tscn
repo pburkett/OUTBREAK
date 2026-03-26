@@ -1,0 +1,111 @@
+[gd_scene format=3 uid="uid://bm2ry58qa7md1"]
+
+[ext_resource type="Script" uid="uid://db870eoi1m3cl" path="res://Enemy/Enemy.gd" id="1_fewhn"]
+[ext_resource type="Script" uid="uid://b0jvcjrll1jya" path="res://Enemy/CastToPlayer.gd" id="2_1lbcg"]
+[ext_resource type="Texture2D" uid="uid://dioxjdpahd1g5" path="res://Enemy/assets/machine_gun_enemy.png" id="3_fewhn"]
+[ext_resource type="Texture2D" uid="uid://clsgj7flhndiq" path="res://flashlight.png" id="4_p1bj5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1lbcg"]
+atlas = ExtResource("3_fewhn")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oi5o7"]
+atlas = ExtResource("3_fewhn")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p1bj5"]
+atlas = ExtResource("3_fewhn")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lsygf"]
+atlas = ExtResource("3_fewhn")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_an18j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1lbcg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oi5o7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p1bj5")
+}],
+"loop": true,
+"name": &"fire",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lsygf")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="OccluderPolygon2D" id="1"]
+polygon = PackedVector2Array(5.98363, -5.01958, -0.999994, 0.00326782, -8.01629, -4.97383, -1.03267, -9.99668)
+
+[node name="MachineGunEnemy" type="PathFollow2D" unique_id=2042926266]
+position = Vector2(-2.38419e-07, -2.38419e-07)
+cubic_interp = false
+script = ExtResource("1_fewhn")
+bullets_per_second = 20.0
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=979226517]
+target_desired_distance = 100.0
+path_postprocessing = 1
+avoidance_enabled = true
+radius = 200.0
+time_horizon_agents = 3.59
+
+[node name="FireRate" type="Timer" parent="." unique_id=1039639318]
+
+[node name="Body" type="StaticBody2D" parent="." unique_id=15451848]
+position = Vector2(2.3919677e-07, 2.3763876e-07)
+
+[node name="BodyCollision" type="CollisionPolygon2D" parent="Body" unique_id=312153561]
+position = Vector2(-14, 9)
+scale = Vector2(3.17708, -161.599)
+polygon = PackedVector2Array(5.9803257, 0.055794507, 2.832798, 0.05559232, 1.8833978, 0.08647229, 3.1372666, 0.11749378, 5.9700418, 0.11767575, 6.919442, 0.086795785)
+
+[node name="Hurtbox" type="Area2D" parent="Body" unique_id=981469812]
+position = Vector2(0.00754261, 0.0176552)
+scale = Vector2(3.17708, -161.599)
+
+[node name="BodyCollision" type="CollisionPolygon2D" parent="Body/Hurtbox" unique_id=684533621]
+position = Vector2(-5.02196, -0.0992242)
+polygon = PackedVector2Array(10.062828, 0.056340087, 2.5087624, 0.055854835, 2.48511, 0.198182, 10.0392, 0.198667)
+
+[node name="CastToPlayer" type="RayCast2D" parent="Body" unique_id=1790745040]
+target_position = Vector2(0, 0)
+script = ExtResource("2_1lbcg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Body" unique_id=1253050049]
+position = Vector2(7.99996, -0.0261389)
+rotation = 1.5708
+sprite_frames = SubResource("SpriteFrames_an18j")
+animation = &"fire"
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Body" unique_id=160565009]
+position = Vector2(-2.39197e-07, -2.37639e-07)
+occluder = SubResource("1")
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="Body" unique_id=1581417879]
+radius = 12.45
+vertices = PackedVector2Array(15.9476385, -16.052193, 16.022787, 6.9476857, -7.977086, 7.026102, -8.052236, -15.973778)
+carve_navigation_mesh = true
+
+[node name="PointLight2D" type="PointLight2D" parent="Body" unique_id=1484961348]
+position = Vector2(9.00322, 0.97058856)
+scale = Vector2(1.0000001, 1.0000001)
+color = Color(1, 1, 0.80784315, 1)
+energy = 1.5
+shadow_enabled = true
+texture = ExtResource("4_p1bj5")
+
+[connection signal="timeout" from="FireRate" to="." method="_on_FireRate_timeout"]
+[connection signal="area_entered" from="Body/Hurtbox" to="." method="_on_Hurtbox_area_entered"]
