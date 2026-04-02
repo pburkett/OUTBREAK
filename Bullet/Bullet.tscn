@@ -124,7 +124,7 @@ gravity_scale = 0.0
 contact_monitor = true
 max_contacts_reported = 20
 script = ExtResource("1")
-collisions_before_disappear = 5
+collisions_before_disappear = 3
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=1872905903 groups=["hitbox"]]
 collision_layer = 3
