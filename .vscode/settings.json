@@ -18,5 +18,6 @@
     "titleBar.inactiveBackground": "#49beb799",
     "titleBar.inactiveForeground": "#15202b99"
   },
-  "peacock.color": "#49beb7"
+  "peacock.color": "#49beb7",
+  "godotTools.editorPath.godot4": "c:\\Users\\pburk\\Godot_v4.6.1-stable_win64.exe\\Godot_v4.6.1-stable_win64.exe"
 }
