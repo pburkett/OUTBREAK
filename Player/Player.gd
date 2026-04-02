@@ -6,7 +6,7 @@ extends CharacterBody2D
 @export var swipe_speed_boost_percentage = 100
 @export var swipe_cooldown_speed_penalty = -40
 @export var turn_speed = .1
-@export var hit_points = 80
+@export var hit_points = 160
 @export var max_hit_points: int = hit_points
 var is_attacking = false
 var is_in_attack_cooldown = false
@@ -48,7 +48,8 @@ func _physics_process(delta):
 		velocity = lerp(velocity, direction.normalized() * current_max_speed, acceleration_speed)
 	else:
 		velocity = lerp(velocity, Vector2.ZERO, deceleration_speed)
-	rotate_sprite(velocity)
+	if velocity: 
+		rotate_sprite(velocity)
 	if i_frames_countdown != 0:
 		i_frames_countdown -= 1
 
@@ -105,7 +106,6 @@ func _on_Hurtbox_area_entered(area)->void:
 			take_damage(area.damage, area.get_parent().linear_velocity )
 	
 func take_damage(damage_amount, impact_velocity):
-	
 	hit_points -= damage_amount
 	taken_damage = true
 	damage_velocity = impact_velocity

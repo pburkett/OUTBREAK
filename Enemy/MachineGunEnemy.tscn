@@ -49,8 +49,7 @@ animations = [{
 [sub_resource type="OccluderPolygon2D" id="1"]
 polygon = PackedVector2Array(5.98363, -5.01958, -0.999994, 0.00326782, -8.01629, -4.97383, -1.03267, -9.99668)
 
-[node name="MachineGunEnemy" type="PathFollow2D" unique_id=2042926266]
-position = Vector2(-2.38419e-07, -2.38419e-07)
+[node name="MachineGunEnemy" type="PathFollow2D" unique_id=2042926266 groups=["absorb_projectiles"]]
 cubic_interp = false
 script = ExtResource("1_fewhn")
 bullets_per_second = 20.0

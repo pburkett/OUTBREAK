@@ -1,4 +1,5 @@
 extends PathFollow2D
+@export var print_to_console = false
 @export var view_distance = 800
 @export var turn_speed = .08
 @export var hit_points = 100
@@ -14,15 +15,17 @@ extends PathFollow2D
 		}
 var player_last_known_location 
 
-@export var patrol_speed = .8
-@export var pursuit_speed = 1.4
+@export var patrol_speed = .7
+@export var pursuit_speed = 1.3
 var current_speed = 0
 @export var acceleration_speed = .1
-@export var deceleration_speed = .10
+@export var deceleration_speed = .05
 
-@export var field_of_view_degrees = 120
-@export var fire_field_degrees = 90
+@export var field_of_view_degrees = 90
+@export var fire_field_degrees = 60
 var current_point = 0
+
+var old_position
 
 var status = "idle"
 var bullet = preload("res://Bullet/Bullet.tscn")
@@ -61,7 +64,10 @@ func _physics_process(delta):
 
 	status = get_new_status(player_spotted)
 	if last_status != status:
-		print('status changed to ', status)
+		if print_to_console:
+			print('enemy status changed to ', status)
+		if last_status == 'patrol':
+			set_rotates(false)
 	call(status_functions[status])
 
 func idle():
@@ -71,9 +77,9 @@ func idle():
 func look_for_player()->bool:
 	# attempts to find player, returns true if successful
 	var collider = ray_cast_to_player.get_collider() 
-	if !collider:
-		print("collider was null")
-	if collider == player_node and dot_product_to_player > scale_degrees_for_dot_product(field_of_view_degrees)  and distance_to_player < view_distance:
+	# if print_to_console:
+		# print(abs(rad_to_deg(angle_difference(vector_to_player.angle(), rotation ))))
+	if collider == player_node and abs(rad_to_deg(angle_difference(vector_to_player.angle(), rotation ))) < (field_of_view_degrees/2)  and distance_to_player < view_distance:
 		player_last_known_location = player_node.get_global_position()
 		vector_to_last_known_location = global_position.direction_to(player_node.get_global_position())	
 		return true
@@ -84,7 +90,7 @@ func scale_degrees_for_dot_product(degrees):
 
 func get_new_status(player_spotted)->String:
 	if player_spotted:
-		if  dot_product_to_player > scale_degrees_for_dot_product(fire_field_degrees):
+		if  abs(rad_to_deg(angle_difference(vector_to_player.angle(), rotation ))) < (field_of_view_degrees/2):
 			return  "firing"
 		else:	
 			return "player_spotted"
@@ -103,6 +109,16 @@ func pursue():
 	current_speed = lerp(float(current_speed), float(pursuit_speed), acceleration_speed)
 	progress = 0
 	progress += current_speed
+	if old_position:
+		var dir = position-old_position
+		var new_angle
+		# if is_attacking:
+		# 	new_angle = snapped(rotation, .25*PI) 
+		# else:
+		new_angle = lerp_angle(rotation, dir.angle(), .1)
+		rotation = new_angle
+	old_position = position
+
 	
 func turn_towards_player()->void:
 	$Body.global_rotation = lerp(currently_facing, vector_to_last_known_location, turn_speed).angle()

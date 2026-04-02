@@ -159,7 +159,7 @@ size = Vector2(1.1159528, 5.431685)
 [sub_resource type="OccluderPolygon2D" id="7"]
 polygon = PackedVector2Array(-1.499962, 10.500006, 2.5000343, 9.499991, 2.500002, 0.49999094, -1.5000055, -1.4999945, -5.999998, 0.5000217, -5.9999657, 9.500022)
 
-[node name="Player" type="CharacterBody2D" unique_id=375443301]
+[node name="Player" type="CharacterBody2D" unique_id=375443301 groups=["absorb_projectiles"]]
 scale = Vector2(2, 2)
 collision_layer = 7
 script = ExtResource("1")
