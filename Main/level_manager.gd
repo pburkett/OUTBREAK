@@ -6,7 +6,7 @@ extends Node2D
 @onready var path_2d = get_node("/root/Main/Level/Path2D")
 
 func _ready():
-	var level = preload("res://Levels/Level2.tscn").instantiate()
+	var level = preload("res://Levels/Level1.tscn").instantiate()
 	var gui = preload("res://GUI/GUI.tscn").instantiate()
 	add_child(level)
 	add_child(gui)

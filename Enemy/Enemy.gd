@@ -112,9 +112,6 @@ func pursue():
 	if old_position:
 		var dir = position-old_position
 		var new_angle
-		# if is_attacking:
-		# 	new_angle = snapped(rotation, .25*PI) 
-		# else:
 		new_angle = lerp_angle(rotation, dir.angle(), .1)
 		rotation = new_angle
 	old_position = position
