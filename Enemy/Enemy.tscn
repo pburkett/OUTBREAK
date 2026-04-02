@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://db870eoi1m3cl" path="res://Enemy/Enemy.gd" id="1"]
 [ext_resource type="Script" uid="uid://b0jvcjrll1jya" path="res://Enemy/CastToPlayer.gd" id="2"]
+[ext_resource type="Script" uid="uid://djs33ywp0gccl" path="res://Enemy/fire_rate.gd" id="2_fkela"]
 [ext_resource type="Texture2D" uid="uid://bhhiyrgoom0qr" path="res://Enemy/assets/main_spritesheet.png" id="3_vso2s"]
 [ext_resource type="Texture2D" uid="uid://clsgj7flhndiq" path="res://flashlight.png" id="4_vso2s"]
 
@@ -61,6 +62,7 @@ radius = 200.0
 time_horizon_agents = 3.59
 
 [node name="FireRate" type="Timer" parent="." unique_id=1039639318]
+script = ExtResource("2_fkela")
 
 [node name="Body" type="StaticBody2D" parent="." unique_id=15451848]
 position = Vector2(2.3919677e-07, 2.3763876e-07)
@@ -68,7 +70,7 @@ position = Vector2(2.3919677e-07, 2.3763876e-07)
 [node name="BodyCollision" type="CollisionPolygon2D" parent="Body" unique_id=312153561]
 position = Vector2(-14, 9)
 scale = Vector2(3.17708, -161.599)
-polygon = PackedVector2Array(5.9803257, 0.055794507, 2.832798, 0.05559232, 1.8833978, 0.08647229, 3.1372666, 0.11749378, 5.9700418, 0.11767575, 6.919442, 0.086795785)
+polygon = PackedVector2Array(6.6098423, 0.049505252, 2.8327894, 0.049505252, 2.2032807, 0.080446035, 3.1372666, 0.11749378, 6.6098423, 0.117574975, 7.2393513, 0.080446035)
 
 [node name="Hurtbox" type="Area2D" parent="Body" unique_id=981469812]
 position = Vector2(0.00754261, 0.0176552)
@@ -76,7 +78,7 @@ scale = Vector2(3.17708, -161.599)
 
 [node name="BodyCollision" type="CollisionPolygon2D" parent="Body/Hurtbox" unique_id=684533621]
 position = Vector2(-5.02196, -0.0992242)
-polygon = PackedVector2Array(10.062828, 0.056340087, 2.5087624, 0.055854835, 2.48511, 0.198182, 10.0392, 0.198667)
+polygon = PackedVector2Array(7.5376205, 0.08076897, 3.1310587, 0.08076897, 3.1310587, 0.16740316, 7.5376205, 0.16740316)
 
 [node name="CastToPlayer" type="RayCast2D" parent="Body" unique_id=1790745040]
 target_position = Vector2(0, 0)
@@ -98,7 +100,7 @@ vertices = PackedVector2Array(15.9476385, -16.052193, 16.022787, 6.9476857, -7.9
 carve_navigation_mesh = true
 
 [node name="PointLight2D" type="PointLight2D" parent="Body" unique_id=1484961348]
-position = Vector2(9.00322, 0.97058856)
+position = Vector2(9, 1)
 scale = Vector2(1.0000001, 1.0000001)
 color = Color(1, 1, 0.80784315, 1)
 energy = 2.5

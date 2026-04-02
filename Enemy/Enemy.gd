@@ -100,8 +100,9 @@ func get_new_status(player_spotted)->String:
 		return "patrol"
 
 func pursue():
+	set_rotates(true)
 	$FireRate.stop()
-	nav_agent.target_position = player_node.global_position
+	nav_agent.target_position =  player_node.get_global_position()
 	var next_point = nav_agent.get_next_path_position()
 	path2d.curve.clear_points()
 	path2d.curve.add_point(path2d.to_local(global_position))
@@ -109,12 +110,14 @@ func pursue():
 	current_speed = lerp(float(current_speed), float(pursuit_speed), acceleration_speed)
 	progress = 0
 	progress += current_speed
-	if old_position:
-		var dir = position-old_position
-		var new_angle
-		new_angle = lerp_angle(rotation, dir.angle(), .1)
-		rotation = new_angle
-	old_position = position
+
+	# if old_position:
+	# 	var dir = position-old_position
+	# 	if print_to_console:
+	# 		print(rad_to_deg(dir.angle()))
+	# 	rotation = lerp_angle(rotation, dir.angle(), .1)
+
+	# old_position = position
 
 	
 func turn_towards_player()->void:
