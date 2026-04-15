@@ -66,8 +66,6 @@ func _physics_process(delta):
 	if last_status != status:
 		if print_to_console:
 			print('enemy status changed to ', status)
-		if last_status == 'patrol':
-			set_rotates(false)
 	call(status_functions[status])
 
 func idle():
@@ -77,6 +75,8 @@ func idle():
 func look_for_player()->bool:
 	# attempts to find player, returns true if successful
 	var collider = ray_cast_to_player.get_collider() 
+	if print_to_console:
+		print(collider)
 	# if print_to_console:
 		# print(abs(rad_to_deg(angle_difference(vector_to_player.angle(), rotation ))))
 	if collider == player_node and abs(rad_to_deg(angle_difference(vector_to_player.angle(), rotation ))) < (field_of_view_degrees/2)  and distance_to_player < view_distance:
@@ -100,7 +100,6 @@ func get_new_status(player_spotted)->String:
 		return "patrol"
 
 func pursue():
-	set_rotates(true)
 	$FireRate.stop()
 	nav_agent.target_position =  player_node.get_global_position()
 	var next_point = nav_agent.get_next_path_position()

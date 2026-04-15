@@ -113,7 +113,6 @@ curve = SubResource("Curve2D_nn734")
 
 [node name="Enemy" parent="Path2D" unique_id=2042926266 instance=ExtResource("3_dl8mf")]
 position = Vector2(16.999985, -249)
-rotation = -0.93362427
 print_to_console = true
 
 [node name="Path2D2" type="Path2D" parent="." unique_id=690604388]
@@ -153,5 +152,5 @@ position = Vector2(-464.3374, -701.1572)
 curve = SubResource("Curve2D_05pb0")
 
 [node name="Enemy" parent="Path2D5" unique_id=1711044006 instance=ExtResource("3_dl8mf")]
-position = Vector2(90.3374, 384.15723)
+position = Vector2(255.3374, 525.1572)
 print_to_console = true
